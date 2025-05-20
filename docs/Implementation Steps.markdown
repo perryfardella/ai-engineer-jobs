@@ -16,8 +16,8 @@
    - Configure environment variables (Done for Supabase, no others needed yet)
 
 3. Set up shadcn/ui
-   - Install and configure shadcn (Installed)
-   - Set up theme and basic styling
+   - Install and configure shadcn (Done)
+   - Set up theme and basic styling (Done)
    - Create layout components
 
 ## Phase 2: Authentication System
