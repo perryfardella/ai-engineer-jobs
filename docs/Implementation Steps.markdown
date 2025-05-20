@@ -44,7 +44,7 @@
    - Implement job details display
    - Add tech stack tags
 
-2. Create jobs listing page (Jobs will be listed on the home page, this will be a SPA, so separate page is not needed)
+2. Add job card components to the home page (Site will largely be a SPA, so separate page is not needed)
 
    - Implement grid/list view
    - Add pagination
