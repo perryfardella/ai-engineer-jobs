@@ -5,6 +5,7 @@ type Seniority = "Junior" | "Mid-Level" | "Senior";
 interface Job {
   title: string;
   company: string;
+  companyUrl: string;
   logo: string;
   location: string;
   seniority: Seniority;
@@ -19,6 +20,7 @@ const sampleJobs: Job[] = [
   {
     title: "Senior AI Engineer",
     company: "OpenAI",
+    companyUrl: "https://openai.com",
     logo: "https://logo.clearbit.com/openai.com",
     location: "San Francisco, CA",
     seniority: "Senior",
@@ -38,6 +40,7 @@ const sampleJobs: Job[] = [
   {
     title: "Machine Learning Engineer",
     company: "Anthropic",
+    companyUrl: "https://anthropic.com",
     logo: "https://logo.clearbit.com/anthropic.com",
     location: "Remote",
     seniority: "Mid-Level",
@@ -51,6 +54,7 @@ const sampleJobs: Job[] = [
   {
     title: "AI Research Engineer",
     company: "DeepMind",
+    companyUrl: "https://deepmind.com",
     logo: "https://logo.clearbit.com/deepmind.com",
     location: "London, UK",
     seniority: "Senior",
@@ -64,6 +68,7 @@ const sampleJobs: Job[] = [
   {
     title: "Junior AI Developer",
     company: "Hugging Face",
+    companyUrl: "https://huggingface.co",
     logo: "https://logo.clearbit.com/huggingface.co",
     location: "Remote",
     seniority: "Junior",
@@ -77,6 +82,7 @@ const sampleJobs: Job[] = [
   {
     title: "AI Infrastructure Engineer",
     company: "Cohere",
+    companyUrl: "https://cohere.com",
     logo: "https://logo.clearbit.com/cohere.com",
     location: "Toronto, Canada",
     seniority: "Mid-Level",
