@@ -24,12 +24,32 @@ const salaryRanges = [
   "$300k+",
 ];
 
+// AI/ML Specialties based on job types
+const specialties = [
+  "AI Engineering",
+  "Machine Learning",
+  "Deep Learning",
+  "Natural Language Processing",
+  "Computer Vision",
+  "Applied ML",
+  "Prompt Engineering",
+  "Language Model Training",
+  "AI Integration",
+  "Robotics & Autonomy",
+  "Speech & Audio",
+  "Reinforcement Learning",
+  "AI Development",
+  "AI Architecture",
+  "AI Program Management",
+];
+
 export function JobFilters() {
   const [filters, setFilters] = useState({
     locations: [] as string[],
     seniority: [] as string[],
     techStack: [] as string[],
     salary: [] as string[],
+    specialties: [] as string[],
   });
 
   const handleFilterChange = (key: keyof typeof filters, value: string) => {
@@ -47,6 +67,7 @@ export function JobFilters() {
       seniority: [],
       techStack: [],
       salary: [],
+      specialties: [],
     });
   };
 
@@ -90,6 +111,27 @@ export function JobFilters() {
                   <div className="flex items-center justify-between w-full">
                     {level}
                     {filters.seniority.includes(level) && (
+                      <Check className="h-4 w-4 text-primary" />
+                    )}
+                  </div>
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+
+          <Select
+            value=""
+            onValueChange={(value) => handleFilterChange("specialties", value)}
+          >
+            <SelectTrigger className="w-full sm:w-[180px]">
+              <SelectValue placeholder="Specialty" />
+            </SelectTrigger>
+            <SelectContent>
+              {specialties.map((specialty) => (
+                <SelectItem key={specialty} value={specialty}>
+                  <div className="flex items-center justify-between w-full">
+                    {specialty}
+                    {filters.specialties.includes(specialty) && (
                       <Check className="h-4 w-4 text-primary" />
                     )}
                   </div>
@@ -186,6 +228,25 @@ export function JobFilters() {
                     onClick={() => handleFilterChange("seniority", level)}
                   >
                     {level}
+                    <X className="ml-1 h-3 w-3" />
+                  </Badge>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {filters.specialties.length > 0 && (
+            <div>
+              <h4 className="text-sm font-medium mb-1">Specialties</h4>
+              <div className="flex flex-wrap gap-1.5">
+                {filters.specialties.map((specialty) => (
+                  <Badge
+                    key={specialty}
+                    variant="secondary"
+                    className="cursor-pointer hover:bg-secondary/80 text-xs sm:text-sm"
+                    onClick={() => handleFilterChange("specialties", specialty)}
+                  >
+                    {specialty}
                     <X className="ml-1 h-3 w-3" />
                   </Badge>
                 ))}

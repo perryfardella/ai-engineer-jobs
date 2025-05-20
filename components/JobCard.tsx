@@ -35,7 +35,7 @@ function getRelativeTime(date: Date): string {
   return `${diffInYears} year${diffInYears === 1 ? "" : "s"} ago`;
 }
 
-interface JobCardProps {
+export interface JobCardProps {
   title: string;
   company: string;
   companyUrl: string;
@@ -47,6 +47,7 @@ interface JobCardProps {
   postingDate: Date;
   applyLink: string;
   techStack: string[];
+  specialty: string;
 }
 
 export function JobCard({
@@ -61,6 +62,7 @@ export function JobCard({
   postingDate,
   applyLink,
   techStack,
+  specialty,
 }: JobCardProps) {
   return (
     <Card className="w-full hover:shadow-lg transition-shadow md:gap-0 sm:gap-4">
@@ -124,6 +126,7 @@ export function JobCard({
             <Coins className="w-3.5 h-3.5" />
             {pay}
           </Badge>
+          <Badge variant="secondary">{specialty}</Badge>
         </div>
         <p className="text-sm text-muted-foreground line-clamp-3">
           {description}

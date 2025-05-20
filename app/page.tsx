@@ -16,6 +16,7 @@ interface Job {
   postingDate: Date;
   applyLink: string;
   techStack: string[];
+  specialty: string;
 }
 
 const sampleJobs: Job[] = [
@@ -38,6 +39,7 @@ const sampleJobs: Job[] = [
       "LLMs",
       "Distributed Systems",
     ],
+    specialty: "AI Engineering",
   },
   {
     title: "Machine Learning Engineer",
@@ -52,6 +54,7 @@ const sampleJobs: Job[] = [
     postingDate: new Date("2024-03-14"),
     applyLink: "https://anthropic.com/careers",
     techStack: ["Python", "PyTorch", "AWS", "Docker", "Kubernetes"],
+    specialty: "Natural Language Processing",
   },
   {
     title: "AI Research Engineer",
@@ -66,6 +69,7 @@ const sampleJobs: Job[] = [
     postingDate: new Date("2024-03-13"),
     applyLink: "https://deepmind.com/careers",
     techStack: ["Python", "TensorFlow", "JAX", "Research", "Mathematics"],
+    specialty: "Deep Learning",
   },
   {
     title: "Junior AI Developer",
@@ -80,6 +84,7 @@ const sampleJobs: Job[] = [
     postingDate: new Date("2024-03-12"),
     applyLink: "https://huggingface.co/careers",
     techStack: ["Python", "Transformers", "NLP", "Open Source"],
+    specialty: "AI Development",
   },
   {
     title: "AI Infrastructure Engineer",
@@ -94,6 +99,7 @@ const sampleJobs: Job[] = [
     postingDate: new Date("2024-03-11"),
     applyLink: "https://cohere.com/careers",
     techStack: ["Python", "MLOps", "Kubernetes", "AWS", "GCP"],
+    specialty: "AI Architecture",
   },
 ];
 
