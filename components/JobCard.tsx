@@ -65,7 +65,7 @@ export function JobCard({
   specialty,
 }: JobCardProps) {
   return (
-    <Card className="w-full hover:shadow-lg transition-shadow md:gap-0 sm:gap-4">
+    <Card className="w-full hover:shadow-lg transition-all duration-200 hover:border-primary/50 hover:ring-1 hover:ring-primary/50">
       <CardHeader className="space-y-4">
         <div className="flex flex-row items-start gap-4">
           <div className="relative w-12 h-12 rounded-lg overflow-hidden bg-muted">

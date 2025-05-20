@@ -4,6 +4,7 @@ import Link from "next/link";
 import { LogoutButton } from "./logout-button";
 import { createClient } from "@/lib/supabase/client";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 
 export function Header() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -40,17 +41,11 @@ export function Header() {
               <LogoutButton />
             ) : (
               <>
-                <Link
-                  href="/auth/login"
-                  className="text-sm font-medium hover:underline"
-                >
-                  Login
+                <Link href="/auth/login">
+                  <Button variant="ghost">Sign in</Button>
                 </Link>
-                <Link
-                  href="/auth/sign-up"
-                  className="text-sm font-medium hover:underline"
-                >
-                  Sign Up
+                <Link href="/auth/sign-up">
+                  <Button>Sign up</Button>
                 </Link>
               </>
             )}
