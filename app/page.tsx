@@ -1,4 +1,5 @@
 import { JobCard } from "@/components/JobCard";
+import { LockedJobCard } from "@/components/JobCard";
 
 type Seniority = "Junior" | "Mid-Level" | "Senior";
 
@@ -102,6 +103,7 @@ export default function Home() {
         {sampleJobs.map((job, index) => (
           <JobCard key={index} {...job} />
         ))}
+        <LockedJobCard {...sampleJobs[0]} totalLockedJobs={50} />
       </main>
     </div>
   );

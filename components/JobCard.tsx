@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
-import { ExternalLink, Clock, MapPin, User, Coins } from "lucide-react";
+import { ExternalLink, Clock, MapPin, User, Coins, Lock } from "lucide-react";
 
 function getRelativeTime(date: Date): string {
   const now = new Date();
@@ -143,5 +143,48 @@ export function JobCard({
         </div>
       </CardContent>
     </Card>
+  );
+}
+
+interface LockedJobCardProps extends JobCardProps {
+  totalLockedJobs: number;
+}
+
+export function LockedJobCard({
+  totalLockedJobs,
+  ...props
+}: LockedJobCardProps) {
+  return (
+    <div className="relative">
+      <div className="blur-[3px] pointer-events-none">
+        <JobCard {...props} />
+      </div>
+      <div className="absolute inset-0 flex items-center justify-center bg-background/50 backdrop-blur-[1px]">
+        <div className="text-center space-y-4 p-6">
+          <Lock className="w-12 h-12 mx-auto text-muted-foreground" />
+          <div className="space-y-2">
+            <h3 className="text-lg font-semibold">Sign in to view more jobs</h3>
+            <p className="text-sm text-muted-foreground">
+              {/* TODO: Replace with actual count from database */}
+              {totalLockedJobs} more jobs waiting for you
+            </p>
+          </div>
+          <div className="flex gap-3 justify-center">
+            <a
+              href="/signin"
+              className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-primary hover:bg-primary/90 rounded-md transition-colors"
+            >
+              Sign in
+            </a>
+            <a
+              href="/signup"
+              className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-primary border border-primary hover:bg-primary/10 rounded-md transition-colors"
+            >
+              Sign up
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
