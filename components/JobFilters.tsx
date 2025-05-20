@@ -188,7 +188,7 @@ export function JobFilters() {
             variant="destructive"
             size="sm"
             onClick={clearFilters}
-            className="w-full sm:w-auto"
+            className="w-full sm:w-auto h-9"
           >
             Clear all filters
           </Button>
