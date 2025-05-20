@@ -99,11 +99,23 @@ const sampleJobs: Job[] = [
 export default function Home() {
   return (
     <div className="min-h-screen p-4 sm:p-6 lg:p-8">
-      <main className="mx-auto max-w-7xl space-y-6">
-        {sampleJobs.map((job, index) => (
-          <JobCard key={index} {...job} />
-        ))}
-        <LockedJobCard {...sampleJobs[0]} totalLockedJobs={50} />
+      <main className="mx-auto max-w-7xl space-y-12">
+        <div className="text-center space-y-4">
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
+            Find Your Next AI Engineering Role
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Discover the most exciting AI engineering opportunities from leading
+            companies. From machine learning to LLMs, find the perfect role to
+            advance your career.
+          </p>
+        </div>
+        <div className="space-y-6">
+          {sampleJobs.map((job, index) => (
+            <JobCard key={index} {...job} />
+          ))}
+          <LockedJobCard {...sampleJobs[0]} totalLockedJobs={50} />
+        </div>
       </main>
     </div>
   );
