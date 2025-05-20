@@ -18,7 +18,7 @@
 3. Set up shadcn/ui
    - Install and configure shadcn (Done)
    - Set up theme and basic styling (Done)
-   - Create layout components
+   - Create layout components (Mostly done)
 
 ## Phase 2: Authentication System
 
@@ -37,12 +37,14 @@
 
 ## Phase 3: Job Listings Core
 
-1. Create job card component
+1. Create job card component (Done)
 
    - Design job card layout
    - Add company logo display
    - Implement job details display
    - Add tech stack tags
+
+<!-- Strikeout step 2 -->
 
 2. Add job card components to the home page (Site will largely be a SPA, so separate page is not needed)
 
@@ -51,7 +53,7 @@
    - Create loading states
    - Add error handling
 
-3. Implement job filtering system
+3. Implement job filtering system **Completed**
    - Create filter components
    - Add location filter
    - Add seniority filter
@@ -74,11 +76,11 @@
 
 ## Phase 5: User Experience and Polish
 
-1. Implement responsive design
+1. Implement responsive design **Completed**
 
-   - Mobile-first approach
-   - Tablet optimization
-   - Desktop optimization
+   - Mobile-first approach **Completed**
+   - Tablet optimization **Completed**
+   - Desktop optimization **Completed**
 
 2. Add loading states and animations
 
