@@ -1,5 +1,6 @@
 import { JobCard } from "@/components/JobCard";
 import { LockedJobCard } from "@/components/JobCard";
+import { JobFilters } from "@/components/JobFilters";
 
 type Seniority = "Junior" | "Mid-Level" | "Senior";
 
@@ -110,6 +111,9 @@ export default function Home() {
             advance your career.
           </p>
         </div>
+
+        <JobFilters />
+
         <div className="space-y-6">
           {sampleJobs.map((job, index) => (
             <JobCard key={index} {...job} />
