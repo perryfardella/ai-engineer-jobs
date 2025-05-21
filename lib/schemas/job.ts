@@ -1,32 +1,128 @@
 import { z } from "zod";
 
-export const jobSchema = z.object({
-  title: z.string().min(1, "Job title is required"),
-  company: z.string().min(1, "Company name is required"),
-  companyUrl: z.string().url("Company URL must be a valid URL"),
-  logo: z.string().url("Logo URL must be a valid URL"),
-  location: z.string().min(1, "Location is required"),
-  seniority: z.enum(["Junior", "Mid-Level", "Senior"], {
-    description: "The seniority level of the position",
-  }),
-  pay: z.string().min(1, "Pay information is required"),
-  description: z.string().min(1, "Job description is required"),
-  postingDate: z.date({
-    description: "The date when the job was posted",
-  }),
-  applyLink: z.string().url("Apply link must be a valid URL"),
-  techStack: z
-    .array(z.string())
-    .min(1, "At least one tech stack item is required"),
-  specialty: z.string().min(1, "Specialty is required"),
-});
+// Define enums for job type and experience level
+const JobType = z
+  .enum([
+    "full-time",
+    "part-time",
+    "contract",
+    "internship",
+    "temporary",
+    "volunteer",
+    "other",
+  ])
+  .describe("Type of employment, such as full-time, part-time, or contract");
 
-// Type inference
-export type Job = z.infer<typeof jobSchema>;
+const ExperienceLevel = z
+  .enum(["entry-level", "mid-level", "senior-level", "executive", "other"])
+  .describe("Level of experience required for the role");
 
-// Optional: Create a schema for creating/updating jobs
-export const createJobSchema = jobSchema.omit({ postingDate: true }).extend({
-  postingDate: z.string().datetime().optional(),
-});
+const Currency = z.enum([
+  "USD",
+  "EUR",
+  "GBP",
+  "CAD",
+  "AUD",
+  "NZD",
+  "CHF",
+  "JPY",
+  "CNY",
+  "INR",
+  "BRL",
+  "ARS",
+  "CLP",
+  "COP",
+  "MXN",
+  "PEN",
+  "PYG",
+  "UYU",
+  "VND",
+  "ZAR",
+]);
 
-export type CreateJob = z.infer<typeof createJobSchema>;
+// Define the main Job Listing schema
+export const jobListingSchema = z
+  .object({
+    id: z
+      .string()
+      .uuid()
+      .describe("Unique identifier for the job listing, typically a UUID"),
+    title: z
+      .string()
+      .min(1)
+      .max(255)
+      .describe('Job title, e.g., "AI Engineer" or "Software Engineer"'),
+    company: z
+      .string()
+      .min(1)
+      .max(255)
+      .describe("Name of the company posting the job"),
+    companyUrl: z
+      .string()
+      .url()
+      .describe("The URL of the company offering the job, must be a valid URL"),
+    companyLogo: z
+      .string()
+      .url()
+      .describe(
+        "The URL of the company's logo, must be a valid URL - get this from clearbit or crunchbase, we aren't self-hosting images."
+      )
+      .optional(),
+    location: z
+      .string()
+      .min(1)
+      .max(255)
+      .describe('Job location, e.g., "Remote" or "San Francisco, CA"'),
+    description: z
+      .string()
+      .min(1)
+      .describe(
+        "Full job description, including responsibilities and requirements"
+      ),
+    skills: z
+      .array(z.string().min(1))
+      .optional()
+      .describe(
+        'List of required skills, e.g., ["Python", "TensorFlow", "LLMs"]'
+      ),
+    experienceLevel: ExperienceLevel.optional().describe(
+      'Experience level, e.g., "entry-level" or "senior-level"'
+    ),
+    yearsOfExperience: z
+      .string()
+      .optional()
+      .describe(
+        'Years of experience required, e.g., "0-2 years" or "3+ years"'
+      ),
+    salary: z
+      .object({
+        range: z
+          .string()
+          .optional()
+          .describe('Salary range, if provided, e.g., "$50,000 - $70,000"'),
+        currency: Currency.optional().describe(
+          "Currency of the salary, e.g., USD, EUR, etc."
+        ),
+      })
+      .optional()
+      .describe("Salary details, including range and currency"),
+    deadline: z
+      .date()
+      .optional()
+      .describe("Application deadline, if specified"),
+    type: JobType.describe("Type of employment for the role"),
+    industry: z
+      .string()
+      .min(1)
+      .max(255)
+      .optional()
+      .describe('Industry of the job, e.g., "Technology" or "Healthcare"'),
+    url: z.string().url().describe("URL of the job listing"),
+    postedAt: z.date().describe("Date when the job was posted"),
+  })
+  .describe(
+    "Schema for validating job listing data before storing in a Supabase database"
+  );
+
+// Export the schema type for TypeScript usage
+export type JobListing = z.infer<typeof jobListingSchema>;
