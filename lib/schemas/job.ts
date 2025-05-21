@@ -43,10 +43,6 @@ const Currency = z.enum([
 // Define the main Job Listing schema
 export const jobListingSchema = z
   .object({
-    id: z
-      .string()
-      .uuid()
-      .describe("Unique identifier for the job listing, typically a UUID"),
     title: z
       .string()
       .min(1)
@@ -117,7 +113,12 @@ export const jobListingSchema = z
       .max(255)
       .optional()
       .describe('Industry of the job, e.g., "Technology" or "Healthcare"'),
-    url: z.string().url().describe("URL of the job listing"),
+    jobListingUrl: z
+      .string()
+      .url()
+      .describe(
+        "URL of the job listing - this will be used as the unique identifier"
+      ),
     postedAt: z.date().describe("Date when the job was posted"),
   })
   .describe(
